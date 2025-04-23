@@ -12,11 +12,11 @@ alunos = [f'Aluno {i}' for i in range(1, 21)]
 
 # Gerar notas aleatórias entre 0 e 10
 notas = {
-    'Matemática': np.random.uniform(0, 10, 20),
-    'Português': np.random.uniform(0, 10, 20),
-    'História': np.random.uniform(0, 10, 20),
-    'Geografia': np.random.uniform(0, 10, 20),
-    'Inglês': np.random.uniform(0, 10, 20)
+    'Matemática': np.random.uniform(0, 10, 20).round(1),
+    'Português': np.random.uniform(0, 10, 20).round(1),
+    'História': np.random.uniform(0, 10, 20).round(1),
+    'Geografia': np.random.uniform(0, 10, 20).round(1),
+    'Inglês': np.random.uniform(0, 10, 20).round(1)
 }
 
 # Gerar faltas aleatórias entre 0 e 15
@@ -32,13 +32,8 @@ df = df[['Aluno', 'Matemática', 'Português', 'História', 'Geografia', 'Inglê
 # TRATAMENTO
 # -------------------------------
 
-# Arredondar notas
-for materia in ['Matemática', 'Português', 'História', 'Geografia', 'Inglês']:
-    df[materia] = df[materia].round(1)
-
 # Zerar notas dos alunos com mais de 10 faltas
-filtro_faltas = df['Faltas'] > 10
-df.loc[filtro_faltas, ['Matemática', 'Português', 'História', 'Geografia', 'Inglês']] = 0
+df.loc[df['Faltas'] > 10, ['Matemática', 'Português', 'História', 'Geografia', 'Inglês']] = 0.0
 
 # Calcular Média Final
 df['Média Final'] = df[['Matemática', 'Português', 'História', 'Geografia', 'Inglês']].mean(axis=1)

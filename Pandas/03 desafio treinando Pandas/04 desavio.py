@@ -39,7 +39,7 @@ media = np.mean(vendas_df['Total'])
 desvio = np.std(vendas_df['Total'])
 
 vendas_df['Nivel'] = np.where(vendas_df['Total'] < media, 'Baixo',
-                              np.where(vendas_df['Total'] <= (media + desvio), 'Médio', 'ALto'))
+                              np.where(vendas_df['Total'] <= (media + desvio), 'Médio', 'Alto'))
 
 # Qual categoria teve o melhor resultado por Estado
 
@@ -56,11 +56,11 @@ print(f'O dia da semana que mais vendeu foi {dias_da_semana.idxmax()}')
 
 # Crie uma análise por mês com
  # total vendido
-vendas_df['Mês'] = vendas_df['Data da Venda'].dt.month
+vendas_df['Mês'] = vendas_df['Data da Venda'].dt.month_name() # dt.month
 total = vendas_df.groupby('Mês')['Total'].sum()
 
  # número de clientes únicos
-unicos = vendas_df.groupby('Mês')['ID Cliente'].nunique()
+unicos = vendas_df.groupby('Mês')['ID Cliente'].nunique() # nunique - conta quantos diferentes tem
 
  # média de valor por cliente
 media = total / unicos

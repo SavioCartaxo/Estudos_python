@@ -48,7 +48,7 @@ print(f'Produto mais vendido: {produto_top} ({quantidade_top} unidades)')
 # 2. Faturamento total da loja (por loja)
 faturamento_lojas = vendas.groupby('ID Loja')['Valor Total'].sum()
 print('\nFaturamento total por loja:')
-print(faturamento_lojas.sort_values())
+print(faturamento_lojas.sort_values(ascending=False))
 
 # 3. Dia com maior faturamento
 faturamento_dias = vendas.groupby('Data')['Valor Total'].sum()
