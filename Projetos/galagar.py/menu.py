@@ -1,4 +1,4 @@
-import msvcrt 
+import msvcrt
 import os
 
 
@@ -6,7 +6,7 @@ def limpar_tela():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-def menu():
+def menu(): # Retorna o Nome da Pessoa após ela digitar
     limpar_tela()
     nome = ''
     while True:
@@ -33,5 +33,5 @@ def menu():
         
         if len(nome) == 35:
             break
-
-
+    
+    return nome
