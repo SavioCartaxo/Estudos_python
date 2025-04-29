@@ -82,9 +82,9 @@ def jogo(tela):
     curses.init_pair(4, curses.COLOR_RED, curses.COLOR_BLACK)
 
     nave = [
-        "   /^\   ",
-        "  /|0|\\  ",
-        " |=|0|=| "
+        r"   /^\   ",
+        r"  /|0|\  ",
+        r" |=|0|=| "
     ]
 
     altura_nave = len(nave)
